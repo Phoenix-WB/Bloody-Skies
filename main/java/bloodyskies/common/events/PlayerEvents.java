@@ -3,8 +3,8 @@ package bloodyskies.common.events;
 import bloodyskies.BloodySkies;
 import bloodyskies.core.init.ItemInit;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -17,10 +17,12 @@ public class PlayerEvents {
 	@SubscribeEvent
 	public static void villagerSacrifice(PlayerInteractEvent.EntityInteract event) {
 		ItemStack tecpatl = event.getItemStack();
+		Entity mobHovered = event.getTarget();
 		Player player = event.getPlayer();
-		LivingEntity villager = event.getEntityLiving();
-		if (tecpatl.getItem() == ItemInit.TECPATL.get() && villager instanceof Villager) {
-				villager.hurt(DamageSource.playerAttack(player), 20.0f);
+		if (tecpatl.getItem() == ItemInit.TECPATL.get() && mobHovered.getType() == EntityType.VILLAGER) {
+			mobHovered.hurt(DamageSource.playerAttack(player), 20.0f);
+			mobHovered.spawnAtLocation(ItemInit.VILLAGER_HEART.get());
+			tecpatl.shrink(1);
 		}
 	}
 }

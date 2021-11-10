@@ -15,5 +15,5 @@ public class ItemInit {
 			() -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 	
 	public static final RegistryObject<Item> TECPATL = ITEMS.register("tecpatl",
-			() -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)));
+			() -> new Item(new Item.Properties().stacksTo(1).tab(CreativeModeTab.TAB_TOOLS)));
 }
