@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "bqb",
+    "qwq",
+    "bqb"
+  ],
+  "key": {
+    "w": {
+      "item": "minecraft:wither_skull"
+    },
+    "b": {
+      "item": "minecraft:bone"
+    },
+    "q": {
+    "item": "minecraft:nether_quartz"
+    }
+  },
+  "result": {
+    "item": "bloodyskies:quartz_blade"
+  }
+}
