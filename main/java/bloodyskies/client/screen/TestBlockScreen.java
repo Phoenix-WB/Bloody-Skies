@@ -39,7 +39,9 @@ public class TestBlockScreen extends AbstractContainerScreen<TestBlockContainer>
 
     @Override
     protected void renderBg(PoseStack poseStack, float partialTicks, int mouseX, int mouseY) {
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
+        RenderSystem.setShaderTexture(0, TEST_BLOCK_GUI);
         this.minecraft.textureManager.bindForSetup(TEST_BLOCK_GUI);
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - imageHeight) / 2;
