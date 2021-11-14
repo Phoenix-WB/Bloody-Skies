@@ -6,7 +6,6 @@ import bloodyskies.core.init.MenuTypesInit;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fmllegacy.RegistryObject;
@@ -24,7 +23,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod("bloodyskies")
 @Mod.EventBusSubscriber(modid = BloodySkies.MOD_ID, bus = Bus.MOD)
 public class BloodySkies {
-	private static final Logger LOGGER = LogManager.getLogger();
+	public static final Logger LOGGER = LogManager.getLogger();
 	public static final String MOD_ID = "bloodyskies";
 
 	public BloodySkies() {

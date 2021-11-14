@@ -5,6 +5,7 @@ import bloodyskies.common.container.TestBlockContainer;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -39,7 +40,9 @@ public class TestBlockScreen extends AbstractContainerScreen<TestBlockContainer>
 
     @Override
     protected void renderBg(PoseStack poseStack, float partialTicks, int mouseX, int mouseY) {
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
+        RenderSystem.setShaderTexture(0, TEST_BLOCK_GUI);
         this.minecraft.textureManager.bindForSetup(TEST_BLOCK_GUI);
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - imageHeight) / 2;
