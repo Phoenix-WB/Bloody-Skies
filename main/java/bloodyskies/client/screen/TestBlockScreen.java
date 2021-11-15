@@ -38,6 +38,8 @@ public class TestBlockScreen extends AbstractContainerScreen<TestBlockContainer>
         this.font.draw(poseStack, this.playerInventoryTitle.getContents(), (float) this.inventoryLabelX, this.inventoryLabelY, 4210752 );
     }
 
+
+
     @Override
     protected void renderBg(PoseStack poseStack, float partialTicks, int mouseX, int mouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);

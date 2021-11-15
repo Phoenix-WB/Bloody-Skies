@@ -3,6 +3,7 @@ package bloodyskies.common.blockentities;
 import bloodyskies.BloodySkies;
 import bloodyskies.common.container.TestBlockContainer;
 import bloodyskies.core.init.BlockEntityInit;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -30,7 +31,7 @@ public class TestBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     @Override
-    protected NonNullList<ItemStack> getItems() {
+    public NonNullList<ItemStack> getItems() {
         return this.items;
     }
 

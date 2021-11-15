@@ -4,28 +4,41 @@ import bloodyskies.BloodySkies;
 
 import bloodyskies.core.init.BlockInit;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.DeathScreen;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.IntTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.nbt.TagType;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.saveddata.SavedData;
+import net.minecraft.world.level.storage.LevelResource;
+import net.minecraft.world.level.storage.LevelStorageSource;
+import net.minecraftforge.common.crafting.NBTIngredient;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fmlserverevents.FMLServerStoppingEvent;
 import org.apache.logging.log4j.Logger;
+
+import java.io.File;
+import java.io.IOException;
 
 
 @Mod.EventBusSubscriber(modid = BloodySkies.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class DayEvents {
 
-    public static long day = 0;
-    public static long dayToDie = 10;
     private static DoDeathEvent doDeathEvent = new DoDeathEvent();
     private static final Minecraft minecraft = Minecraft.getInstance();
     private static final Logger LOGGER = BloodySkies.LOGGER;
+    private static File playerDir;
+    public static long day = 0;
+    public static long dayToDie = 10;
     public static int checkDeathEvent = -2;
 
     // CHANGE ALL OF THESE TO PRIVATE WHEN DONE WITH COMMAND ^^^
@@ -69,6 +82,36 @@ public class DayEvents {
 
             }
         }
+    }
+
+    public void PlayerDataStorage(LevelStorageSource.LevelStorageAccess p_78430_) {
+
+    }
+
+
+
+    /* I am still workingo on this, idk if i should use it or something else
+
+    public static void onWorldStart() {
+
+        File playerDataDir = new File(LevelResource.PLAYER_DATA_DIR.toString());
+
+        try {
+            File file = new File("filename.txt");
+            if (file.createNewFile()) {
+                System.out.println("File created: " + file.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    } */
+
+    @SubscribeEvent
+    public static void onWorldSave(FMLServerStoppingEvent event) {
+
     }
 
     @SubscribeEvent

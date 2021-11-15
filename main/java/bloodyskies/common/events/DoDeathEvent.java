@@ -1,7 +1,6 @@
 package bloodyskies.common.events;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 
 import java.util.UUID;
