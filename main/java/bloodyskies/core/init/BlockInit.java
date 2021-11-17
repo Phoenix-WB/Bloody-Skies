@@ -14,5 +14,5 @@ public class BlockInit {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, BloodySkies.MOD_ID);
 
-    public static final RegistryObject<Block> TEST_BLOCK = BLOCKS.register("test_block", () -> new TestBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.CLAY)));
+    public static final RegistryObject<Block> TEST_BLOCK = BLOCKS.register("test_block", () -> new TestBlock(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.CLAY).noOcclusion()));
 }

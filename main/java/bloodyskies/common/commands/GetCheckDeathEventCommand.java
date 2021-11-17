@@ -15,7 +15,7 @@ public class GetCheckDeathEventCommand {
 
     private int getCheckDeathEvent(CommandSourceStack source) {
 
-        source.sendSuccess(new TextComponent("CheckDeathEvent: " + DayEvents.checkDeathEvent), true);
+        source.sendSuccess(new TextComponent("CheckDeathEvent: " + DayEvents.getCheckDeathEvent()), true);
 
         return 1;
 

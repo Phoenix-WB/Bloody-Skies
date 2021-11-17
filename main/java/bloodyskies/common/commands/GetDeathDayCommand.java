@@ -14,7 +14,7 @@ public class GetDeathDayCommand {
 
     private int getDeathDay(CommandSourceStack source) {
 
-        source.sendSuccess(new TextComponent("DeathDay: " + DayEvents.dayToDie), true);
+        source.sendSuccess(new TextComponent("DeathDay: " + DayEvents.getDayToDie()), true);
 
         return 1;
 

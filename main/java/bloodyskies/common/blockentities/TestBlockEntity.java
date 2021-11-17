@@ -36,7 +36,7 @@ public class TestBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     @Override
-    protected void setItems(NonNullList<ItemStack> items) {
+    public void setItems(NonNullList<ItemStack> items) {
         this.items = items;
     }
 

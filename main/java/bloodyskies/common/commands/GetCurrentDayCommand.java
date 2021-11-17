@@ -14,7 +14,7 @@ public class GetCurrentDayCommand {
 
     private int getCurrentDay(CommandSourceStack source) {
 
-        source.sendSuccess(new TextComponent("CurrentDay: " + DayEvents.day), true);
+        source.sendSuccess(new TextComponent("CurrentDay: " + DayEvents.getDay()), true);
 
         return 1;
 

@@ -21,6 +21,7 @@ public class TestBlockContainer extends AbstractContainerMenu {
 
     public final TestBlockEntity be;
     private final ContainerLevelAccess canInteractWithCallable;
+    public static ItemStack item;
 
     public TestBlockContainer(final int windowId, final Inventory inv, final TestBlockEntity be) {
         super(MenuTypesInit.TEST_BLOCK_MENU_TYPE.get(), windowId);

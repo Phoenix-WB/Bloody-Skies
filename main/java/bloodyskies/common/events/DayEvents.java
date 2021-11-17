@@ -9,6 +9,7 @@ import net.minecraft.nbt.IntTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.nbt.TagType;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -27,7 +28,6 @@ import net.minecraftforge.fmlserverevents.FMLServerStoppingEvent;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
-import java.io.IOException;
 
 
 @Mod.EventBusSubscriber(modid = BloodySkies.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -37,11 +37,10 @@ public class DayEvents {
     private static final Minecraft minecraft = Minecraft.getInstance();
     private static final Logger LOGGER = BloodySkies.LOGGER;
     private static File playerDir;
-    public static long day = 0;
-    public static long dayToDie = 10;
-    public static int checkDeathEvent = -2;
+    private static long day = 0;
+    private static long dayToDie = 10;
+    private static int checkDeathEvent = -2;
 
-    // CHANGE ALL OF THESE TO PRIVATE WHEN DONE WITH COMMAND ^^^
 
 
     @SubscribeEvent
@@ -83,14 +82,20 @@ public class DayEvents {
             }
         }
     }
-
-    public void PlayerDataStorage(LevelStorageSource.LevelStorageAccess p_78430_) {
-
+    /*
+    public SavedData create() {
+        return new SavedData();
     }
 
+    public ExampleSavedData load(CompoundTag tag) {
+        ExampleSavedData data = this.create();
+        // Load saved data
+        return data;
+    }*/
 
 
-    /* I am still workingo on this, idk if i should use it or something else
+
+    /* I am still working on this, idk if i should use it or something else
 
     public static void onWorldStart() {
 
@@ -129,5 +134,18 @@ public class DayEvents {
             mobHovered.spawnAtLocation(BlockInit.TEST_BLOCK.get());
             System.out.println(day);
         }
+    }
+
+    public static long getDay() {
+        return day;
+    }
+
+    public static long getDayToDie() {
+        return dayToDie;
+    }
+
+
+    public static int getCheckDeathEvent() {
+        return checkDeathEvent;
     }
 }

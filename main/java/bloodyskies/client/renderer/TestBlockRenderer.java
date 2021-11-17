@@ -2,6 +2,7 @@ package bloodyskies.client.renderer;
 
 import bloodyskies.common.blockentities.TestBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Quaternion;
 import com.mojang.math.Vector3f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -19,6 +20,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class TestBlockRenderer implements BlockEntityRenderer<TestBlockEntity> {
 
 	private float degrees;
+	private static Minecraft minecraft = Minecraft.getInstance();
 
 	public TestBlockRenderer(BlockEntityRendererProvider.Context rendererDispatcherIn) {
 		super();
@@ -45,9 +47,16 @@ public class TestBlockRenderer implements BlockEntityRenderer<TestBlockEntity> {
 	}
 
 
-	private void renderItem(ItemStack stack, float partialTicks, PoseStack matrixStackIn, MultiBufferSource bufferIn,
-			int combinedLightIn, int combinedOverlay) {
-		BakedModel model = Minecraft.getInstance().getItemRenderer().getModel(stack, null, null, 0);
-		Minecraft.getInstance().getItemRenderer().render(stack, ItemTransforms.TransformType.FIXED, true, matrixStackIn, bufferIn, combinedLightIn, combinedOverlay, model);
+
+
+
+	private void renderItem(ItemStack stack, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int combinedLight, int combinedOverlay) {
+		poseStack.pushPose();
+		poseStack.translate(0, 0.25, 0);
+		BakedModel model = minecraft.getItemRenderer().getModel(stack, null, null, 0);
+		minecraft.getItemRenderer().render(stack, ItemTransforms.TransformType.FIXED, true, poseStack, buffer, combinedLight, combinedOverlay, model);
+		poseStack.popPose();
 	}
+
+
 }
