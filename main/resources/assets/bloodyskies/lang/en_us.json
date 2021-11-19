@@ -3,5 +3,9 @@
 	"item.bloodyskies.crimson_ichor": "Crimson Ichor",
 	"item.bloodyskies.quartz_blade": "Quartz Blade",
 	"item.bloodyskies.tecpatl": "Tecpatl",
-	"item.bloodyskies.villager_heart": "Villager Heart"
+	"item.bloodyskies.villager_heart": "Villager Heart",
+	
+	"block.bloodyskies.bloodstone": "Bloodstone",
+	
+	"entity.bloodyskies.bloodjaw": "Bloodjaw"
 }
