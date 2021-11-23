@@ -1,0 +1,26 @@
+modLoader="javafml" #mandatory
+loaderVersion="[37,)" #mandatory 
+license="MIT"
+[[mods]] #mandatory
+modId="bloodyskies" #mandatory
+version="${file.jarVersion}" #mandatory
+displayName="Bloody Skies" #mandatory
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
+logoFile="LOGO.png" #optional
+credits="Made for Turty Wurty's november modding competition; Join my server for more development!: https://discord.gg/n5PnwgKSa8" #optional
+authors="Phoenix WB" #optional
+description='''
+A clean world cannot come without sacrifice...
+'''
+[[dependencies.bloodyskies]] #optional
+    modId="forge" #mandatory
+    mandatory=true #mandatory
+    versionRange="[37,)" #mandatory
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.bloodyskies]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.17.1,1.18)"
+    ordering="NONE"
+    side="BOTH"
