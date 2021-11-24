@@ -16,7 +16,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class BloodAltarScreen extends AbstractContainerScreen<BloodAltarContainer> {
 
-    private static final ResourceLocation TEST_BLOCK_GUI = new ResourceLocation(BloodySkies.MOD_ID, "textures/gui/test_block.png");
+    private static final ResourceLocation TEST_BLOCK_GUI = new ResourceLocation(BloodySkies.MOD_ID, "textures/gui/blood_alter.png");
 
     public BloodAltarScreen(BloodAltarContainer screenContainer, Inventory inv, Component title) {
         super(screenContainer, inv, title);
