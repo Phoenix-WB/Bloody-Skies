@@ -16,7 +16,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class BloodAltarScreen extends AbstractContainerScreen<BloodAltarContainer> {
 
-    private static final ResourceLocation TEST_BLOCK_GUI = new ResourceLocation(BloodySkies.MOD_ID, "textures/gui/blood_alter.png");
+    private static final ResourceLocation BLOOD_ALTAR_GUI = new ResourceLocation(BloodySkies.MOD_ID, "textures/gui/blood_altar_gui.png");
 
     public BloodAltarScreen(BloodAltarContainer screenContainer, Inventory inv, Component title) {
         super(screenContainer, inv, title);
@@ -45,8 +45,8 @@ public class BloodAltarScreen extends AbstractContainerScreen<BloodAltarContaine
     protected void renderBg(PoseStack poseStack, float partialTicks, int mouseX, int mouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
-        RenderSystem.setShaderTexture(0, TEST_BLOCK_GUI);
-        this.minecraft.textureManager.bindForSetup(TEST_BLOCK_GUI);
+        RenderSystem.setShaderTexture(0, BLOOD_ALTAR_GUI);
+        this.minecraft.textureManager.bindForSetup(BLOOD_ALTAR_GUI);
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - imageHeight) / 2;
         this.blit(poseStack, x, y, 0, 0, this.imageWidth, this.imageHeight);
