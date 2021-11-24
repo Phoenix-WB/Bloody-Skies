@@ -3,13 +3,20 @@ package com.phoenixwb.bloodyskies.common.block;
 
 import javax.annotation.Nullable;
 
+import com.phoenixwb.bloodyskies.BloodySkies;
 import com.phoenixwb.bloodyskies.common.blockentities.BloodAltarEntity;
 
+import com.phoenixwb.bloodyskies.core.init.ItemInit;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -20,6 +27,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fmllegacy.network.NetworkHooks;
 
 public class BloodAltar extends BaseEntityBlock {
@@ -53,8 +63,13 @@ public class BloodAltar extends BaseEntityBlock {
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         if(!level.isClientSide) {
             BlockEntity be = level.getBlockEntity(pos);
+            ItemStack item = player.getItemInHand(hand);
             if (be instanceof BloodAltarEntity) {
-                NetworkHooks.openGui((ServerPlayer) player, (BloodAltarEntity) be, pos);
+                if(!(item.getItem() instanceof SwordItem)) {
+                    NetworkHooks.openGui((ServerPlayer) player, (BloodAltarEntity) be, pos);
+                } else {
+                    ((BloodAltarEntity) be).sacrifice(player, hand, item);
+                }
             }
         }
         return super.use(state, level, pos, player, hand, result);

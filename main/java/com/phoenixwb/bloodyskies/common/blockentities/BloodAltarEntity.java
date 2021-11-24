@@ -4,26 +4,58 @@ import com.phoenixwb.bloodyskies.BloodySkies;
 import com.phoenixwb.bloodyskies.common.container.BloodAltarContainer;
 import com.phoenixwb.bloodyskies.core.init.BlockEntityInit;
 
+import com.phoenixwb.bloodyskies.core.init.ItemInit;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BloodAltarEntity extends RandomizableContainerBlockEntity {
 
     public static int slots = 1;
+    private static Minecraft minecraft = Minecraft.getInstance();
 
     protected NonNullList<ItemStack> items = NonNullList.withSize(slots, ItemStack.EMPTY);
 
-    public BloodAltarEntity(BlockPos p_155229_, BlockState p_155230_) {
-        super(BlockEntityInit.BLOOD_ALTAR_ENTITY.get(), p_155229_, p_155230_);
+    public BloodAltarEntity(BlockPos pos, BlockState state) {
+        super(BlockEntityInit.BLOOD_ALTAR_ENTITY.get(), pos, state);
+    }
+
+    public void sacrifice(Player player, InteractionHand hand, ItemStack item) {
+        Level level = minecraft.level;
+
+        if(level == null) {
+            return;
+        }
+
+        ItemStack itemStack = this.items.get(0);
+
+        if(!itemStack.getItem().equals(ItemInit.VILLAGER_HEART.get())) {
+            return;
+        }
+
+        item.hurtAndBreak(1, player, (p_150686_) -> {
+            p_150686_.broadcastBreakEvent(hand);
+        });
+
+        this.resetItems();
+
+        // Bloody Sky + other events need to be called here
+    }
+
+    public void resetItems() {
+        this.items = NonNullList.withSize(slots, ItemStack.EMPTY);
     }
 
     @Override
