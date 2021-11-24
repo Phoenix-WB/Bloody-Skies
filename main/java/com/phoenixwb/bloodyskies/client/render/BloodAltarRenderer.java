@@ -46,6 +46,7 @@ public class BloodAltarRenderer implements BlockEntityRenderer<BloodAltarEntity>
 	private void renderItem(ItemStack stack, float partialTicks, PoseStack poseStack, MultiBufferSource buffer,
 			int combinedLight, int combinedOverlay) {
 		poseStack.pushPose();
+		poseStack.scale(0.87F, 0.87F, 0.87F);
 		poseStack.translate(0, 0.25, 0);
 		BakedModel model = minecraft.getItemRenderer().getModel(stack, null, null, 0);
 		minecraft.getItemRenderer().render(stack, ItemTransforms.TransformType.FIXED, true, poseStack, buffer,
