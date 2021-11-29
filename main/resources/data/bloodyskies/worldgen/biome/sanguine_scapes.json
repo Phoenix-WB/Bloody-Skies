@@ -1,0 +1,56 @@
+{
+  "surface_builder": "bloodyskies:bloodstone_surface",
+  "depth": 5,
+  "scale": 3.4,
+  "temperature": 2,
+  "downfall": 0,
+  "precipitation": "none",
+  "category": "desert",
+  "player_spawn_friendly": false,
+  "effects": {
+    "sky_color": 12132898,
+    "fog_color": 12596266,
+    "water_color": 8926517,
+    "water_fog_color": 9585989,
+    "grass_color": 7410708,
+    "foliage_color": 5968139,
+    "ambient_sound": "minecraft:ambient.nether_wastes.loop",
+    "mood_sound": {
+      "sound": "minecraft:ambient.nether_wastes.mood",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2
+    },
+    "additions_sound": {
+      "sound": "minecraft:ambient.nether_wastes.additions",
+      "tick_chance": 0.0111
+    },
+    "music": {
+      "sound": "minecraft:ambient.nether_wastes",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": false
+    }
+  },
+  "starts": [
+    "minecraft:ruined_portal_nether",
+    "minecraft:nether_fossil"
+  ],
+  "spawners": {
+    "monster": [
+      {
+        "type": "bloodyskies:bloodjaw",
+        "weight": 30,
+        "minCount": 3,
+        "maxCount": 5
+      }
+    ]
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [
+      "bloodyskies:clot_lily_feature"
+    ]
+  ]
+}

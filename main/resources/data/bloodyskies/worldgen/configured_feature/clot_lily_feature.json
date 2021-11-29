@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:decorated",
+  "config": {
+    "decorator": {
+      "type": "minecraft:count",
+      "config": {
+        "count": 1
+      }
+    },
+    "feature": {
+      "type": "minecraft:decorated",
+      "config": {
+        "decorator": {
+          "type": "minecraft:decorated",
+          "config": {
+            "outer": {
+              "type": "minecraft:chance",
+              "config": {
+                "chance": 1
+              }
+            },
+            "inner": {
+              "type": "minecraft:heightmap_spread_double",
+              "config": {
+                "heightmap": "WORLD_SURFACE_WG"
+              }
+            }
+          }
+        },
+        "feature": "bloodyskies:clot_lily_feature"
+      }
+    }
+  }
+}
