@@ -2,29 +2,16 @@
   "type": "minecraft:decorated",
   "config": {
     "decorator": {
-      "type": "minecraft:count",
-      "config": {
-        "count": 1
-      }
+      "type": "minecraft:square",
+      "config": {}
     },
     "feature": {
       "type": "minecraft:decorated",
       "config": {
         "decorator": {
-          "type": "minecraft:decorated",
+          "type": "minecraft:heightmap_spread_double",
           "config": {
-            "outer": {
-              "type": "minecraft:chance",
-              "config": {
-                "chance": 1
-              }
-            },
-            "inner": {
-              "type": "minecraft:heightmap_spread_double",
-              "config": {
-                "heightmap": "WORLD_SURFACE_WG"
-              }
-            }
+            "heightmap": "WORLD_SURFACE"
           }
         },
         "feature": "bloodyskies:clot_lily_feature"
@@ -32,3 +19,4 @@
     }
   }
 }
+

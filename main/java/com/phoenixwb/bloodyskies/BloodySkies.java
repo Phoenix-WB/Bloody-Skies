@@ -43,8 +43,8 @@ public class BloodySkies {
 		BlockInit.BLOCKS.register(bus);
 		BlockEntityInit.BLOCK_ENTITIES.register(bus);
 		MenuTypesInit.MENU_TYPES.register(bus);
-		SurfaceBuilderInit.SURFACE_BUILDERS.register(bus);
 		FeatureInit.FEATURES.register(bus);
+		SurfaceBuilderInit.SURFACE_BUILDERS.register(bus);
 		BiomeInit.BIOMES.register(bus);
 		BiomeInit.registerBiomes();
 

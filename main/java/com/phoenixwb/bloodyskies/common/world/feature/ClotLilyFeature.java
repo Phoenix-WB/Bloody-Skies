@@ -21,63 +21,44 @@ public class ClotLilyFeature extends Feature<NoneFeatureConfiguration> {
 
 	@Override
 	public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> feature) {
-		Random rand = feature.random();
 		BlockPos pos = feature.origin();
+		Random rand = new Random();
 		WorldGenLevel level = feature.level();
+		BlockPos directionsNS[] = {pos.north(), pos.south()};
+		BlockPos directionsEW[] = {pos.east(), pos.west()};
 		while (pos.getY() > 1 && level.isEmptyBlock(pos)) {
 			pos = pos.below();
 		}
+		
+		if(isBloodstone(pos, level) != true)
+		{
+			return false;
+		}
+		
 		pos = pos.above();
 
-		feature.level().setBlock(pos, CLOT_LILY, 0);
-		feature.level().setBlock(placementDirection("N/S", rand.nextInt(3), pos, feature), CLOT_LILY, 0);
-		feature.level().setBlock(placementDirection("E/W", rand.nextInt(3), pos, feature), CLOT_LILY, 0);
-		feature.level().setBlock(placementDirection("C", rand.nextInt(5), pos, feature), CLOT_LILY, 0);
-
-		return false;
+		level.setBlock(pos, CLOT_LILY, 1);
+		level.setBlock(heightCheck(directionsNS[rand.nextInt(2)], level), CLOT_LILY, 1);
+		level.setBlock(heightCheck(directionsEW[rand.nextInt(2)], level), CLOT_LILY, 1);
+		return true;
 	}
-
-	public BlockPos placementDirection(String direction, int rand, BlockPos pos,
-			FeaturePlaceContext<NoneFeatureConfiguration> feature) {
-		BlockPos position = pos;
-		BlockPos north = pos.north();
-		BlockPos south = pos.south();
-		BlockPos east = pos.east();
-		BlockPos west = pos.west();
-		WorldGenLevel level = feature.level();
-		if (direction == "N/S" && rand == 1
-				&& level.getBlockState(north.below()) == BlockInit.BLOODSTONE.get().defaultBlockState()) {
-			position = north;
-			return position;
-		} else if (direction == "N/S" && rand == 2
-				&& level.getBlockState(south.below()) == BlockInit.BLOODSTONE.get().defaultBlockState()) {
-			position = south;
-			return position;
-		} else if (direction == "E/W" && rand == 1
-				&& level.getBlockState(east.below()) == BlockInit.BLOODSTONE.get().defaultBlockState()) {
-			position = east;
-			return position;
-		} else if (direction == "E/W" && rand == 2
-				&& level.getBlockState(west.below()) == BlockInit.BLOODSTONE.get().defaultBlockState()) {
-			position = west;
-			return position;
-		} else if (direction == "C" && rand == 1
-				&& level.getBlockState(north.east().below()) == BlockInit.BLOODSTONE.get().defaultBlockState()) {
-			position = north.east();
-			return position;
-		} else if (direction == "C" && rand == 2
-				&& level.getBlockState(north.west().below()) == BlockInit.BLOODSTONE.get().defaultBlockState()) {
-			position = north.west();
-			return position;
-		} else if (direction == "C" && rand == 3
-				&& level.getBlockState(south.east().below()) == BlockInit.BLOODSTONE.get().defaultBlockState()) {
-			position = south.east();
-			return position;
-		} else if (direction == "C" && rand == 4
-				&& level.getBlockState(south.west().below()) == BlockInit.BLOODSTONE.get().defaultBlockState()) {
-			position = south.west();
-			return position;
+	
+	public BlockPos heightCheck(BlockPos pos, WorldGenLevel level)
+	{
+		BlockPos newPos = pos;
+		while (pos.getY() > 1 && level.isEmptyBlock(pos)) {
+			newPos = pos.below();
 		}
-		return position;
+		newPos = pos.above();
+		return newPos;
+	}
+	
+	public boolean isBloodstone(BlockPos pos, WorldGenLevel level)
+	{
+		if(level.getBlockState(pos) != BlockInit.BLOODSTONE.get().defaultBlockState())
+		{
+			return false;
+		}
+		return true;
 	}
 }
