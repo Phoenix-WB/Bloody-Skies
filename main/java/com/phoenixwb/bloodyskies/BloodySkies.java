@@ -11,6 +11,7 @@ import com.phoenixwb.bloodyskies.core.init.EntityTypesInit;
 import com.phoenixwb.bloodyskies.core.init.FeatureInit;
 import com.phoenixwb.bloodyskies.core.init.ItemInit;
 import com.phoenixwb.bloodyskies.core.init.MenuTypesInit;
+import com.phoenixwb.bloodyskies.core.init.SurfaceBuilderInit;
 
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -42,6 +43,7 @@ public class BloodySkies {
 		BlockInit.BLOCKS.register(bus);
 		BlockEntityInit.BLOCK_ENTITIES.register(bus);
 		MenuTypesInit.MENU_TYPES.register(bus);
+		SurfaceBuilderInit.SURFACE_BUILDERS.register(bus);
 		FeatureInit.FEATURES.register(bus);
 		BiomeInit.BIOMES.register(bus);
 		BiomeInit.registerBiomes();

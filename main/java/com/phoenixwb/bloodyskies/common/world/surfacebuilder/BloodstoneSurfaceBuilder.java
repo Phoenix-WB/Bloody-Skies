@@ -12,11 +12,11 @@ import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.level.levelgen.surfacebuilders.SurfaceBuilderBaseConfiguration;
 
 public class BloodstoneSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderBaseConfiguration> {
-	private static final BlockState BLOODSTONE = BlockInit.BLOODSTONE.get().defaultBlockState();
+	public static final BlockState BLOODSTONE = BlockInit.BLOODSTONE.get().defaultBlockState();
 	public static final SurfaceBuilderBaseConfiguration CONFIG_BLOODSTONE = new SurfaceBuilderBaseConfiguration(BLOODSTONE, BLOODSTONE, BLOODSTONE);
 	
-	public BloodstoneSurfaceBuilder(Codec<SurfaceBuilderBaseConfiguration> p_75221_) {
-		super(p_75221_);
+	public BloodstoneSurfaceBuilder(Codec<SurfaceBuilderBaseConfiguration> codec) {
+		super(codec);
 	}
 
 	@Override
