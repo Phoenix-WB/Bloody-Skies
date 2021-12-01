@@ -61,7 +61,7 @@ public class BloodAltarEntity extends RandomizableContainerBlockEntity {
 
 	@Override
 	protected Component getDefaultName() {
-		return new TranslatableComponent("container." + BloodySkies.MOD_ID + ".test_block");
+		return new TranslatableComponent("container." + BloodySkies.MOD_ID + ".blood_altar");
 	}
 
 	@Override

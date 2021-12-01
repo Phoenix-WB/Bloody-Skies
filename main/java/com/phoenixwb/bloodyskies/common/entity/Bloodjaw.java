@@ -1,6 +1,7 @@
 package com.phoenixwb.bloodyskies.common.entity;
 
 import java.util.Optional;
+import java.util.Random;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
@@ -18,10 +19,12 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -49,6 +52,7 @@ import net.minecraft.world.entity.monster.hoglin.HoglinBase;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.schedule.Activity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class Bloodjaw extends Monster implements Enemy, HoglinBase {
@@ -65,13 +69,15 @@ public class Bloodjaw extends Monster implements Enemy, HoglinBase {
 
 	public Bloodjaw(EntityType<? extends Bloodjaw> p_34204_, Level p_34205_) {
 		super(p_34204_, p_34205_);
-		this.xpReward = 30;
+		this.xpReward = 20;
 	}
 
+	@Override
 	protected Brain.Provider<Bloodjaw> brainProvider() {
 		return Brain.provider(MEMORY_TYPES, SENSOR_TYPES);
 	}
 
+	@Override
 	protected Brain<?> makeBrain(Dynamic<?> p_34221_) {
 		Brain<Bloodjaw> brain = this.brainProvider().makeBrain(p_34221_);
 		initCoreActivity(brain);
@@ -81,6 +87,11 @@ public class Bloodjaw extends Monster implements Enemy, HoglinBase {
 		brain.setDefaultActivity(Activity.IDLE);
 		brain.useDefaultActivity();
 		return brain;
+	}
+
+	public static boolean checkSpawnRules(EntityType<Bloodjaw> p_33018_, ServerLevelAccessor p_33019_,
+			MobSpawnType p_33020_, BlockPos p_33021_, Random p_33022_) {
+		return p_33019_.getDifficulty() != Difficulty.PEACEFUL && p_33019_.getLightEmission(p_33021_) >= 0;
 	}
 
 	private static void initCoreActivity(Brain<Bloodjaw> p_34217_) {
@@ -104,7 +115,7 @@ public class Bloodjaw extends Monster implements Enemy, HoglinBase {
 						(net.minecraft.world.entity.ai.behavior.Behavior<net.minecraft.world.entity.Mob>) (net.minecraft.world.entity.ai.behavior.Behavior) new RunIf<Bloodjaw>(
 								Bloodjaw::isAdult, new MeleeAttack(13)),
 						(net.minecraft.world.entity.ai.behavior.Behavior<net.minecraft.world.entity.Mob>) (net.minecraft.world.entity.ai.behavior.Behavior) new RunIf<Bloodjaw>(
-								Bloodjaw::isBaby, new MeleeAttack(15)),
+								Bloodjaw::isBaby, new MeleeAttack(17)),
 						new StopAttackingIfTargetInvalid()),
 				MemoryModuleType.ATTACK_TARGET);
 	}
@@ -119,11 +130,13 @@ public class Bloodjaw extends Monster implements Enemy, HoglinBase {
 		return entitytype != EntityTypesInit.BLOODJAW.get() && Sensor.isEntityAttackable(this, p_34253_);
 	}
 
+	@Override
 	protected void defineSynchedData() {
 		super.defineSynchedData();
 		this.entityData.define(DATA_BABY_ID, false);
 	}
 
+	@Override
 	public void onSyncedDataUpdated(EntityDataAccessor<?> p_34225_) {
 		super.onSyncedDataUpdated(p_34225_);
 		if (DATA_BABY_ID.equals(p_34225_)) {
@@ -133,15 +146,16 @@ public class Bloodjaw extends Monster implements Enemy, HoglinBase {
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
-		return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 85.0D)
-				.add(Attributes.MOVEMENT_SPEED, (double) 0.4F).add(Attributes.KNOCKBACK_RESISTANCE, (double) 1D)
-				.add(Attributes.ATTACK_KNOCKBACK, 2).add(Attributes.ATTACK_DAMAGE, 13);
+		return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 50.0D)
+				.add(Attributes.MOVEMENT_SPEED, (double) 0.4F).add(Attributes.KNOCKBACK_RESISTANCE, (double) 0.2D)
+				.add(Attributes.ATTACK_KNOCKBACK, 1).add(Attributes.ATTACK_DAMAGE, 17);
 	}
 
 	public boolean isAdult() {
 		return !this.isBaby();
 	}
 
+	@Override
 	public boolean doHurtTarget(Entity p_34207_) {
 		if (!(p_34207_ instanceof LivingEntity)) {
 			return false;
@@ -153,10 +167,12 @@ public class Bloodjaw extends Monster implements Enemy, HoglinBase {
 		}
 	}
 
+	@Override
 	public boolean canBeLeashed(Player p_34219_) {
 		return !this.isLeashed();
 	}
 
+	@Override
 	protected void blockedByShield(LivingEntity p_34246_) {
 		if (!this.isBaby()) {
 			HoglinBase.throwTarget(this, p_34246_);
@@ -164,10 +180,12 @@ public class Bloodjaw extends Monster implements Enemy, HoglinBase {
 
 	}
 
+	@Override
 	public double getPassengersRidingOffset() {
 		return (double) this.getBbHeight() - (this.isBaby() ? 0.2D : 0.15D);
 	}
 
+	@Override
 	public boolean hurt(DamageSource p_34214_, float p_34215_) {
 		boolean flag = super.hurt(p_34214_, p_34215_);
 		if (this.level.isClientSide) {
@@ -190,6 +208,7 @@ public class Bloodjaw extends Monster implements Enemy, HoglinBase {
 		this.brain.setMemoryWithExpiry(MemoryModuleType.ATTACK_TARGET, p_34255_, 200L);
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public Brain<Bloodjaw> getBrain() {
 		return (Brain<Bloodjaw>) super.getBrain();
@@ -206,6 +225,7 @@ public class Bloodjaw extends Monster implements Enemy, HoglinBase {
 		this.setAggressive(this.brain.hasMemoryValue(MemoryModuleType.ATTACK_TARGET));
 	}
 
+	@Override
 	protected void customServerAiStep() {
 		this.level.getProfiler().push("bloodjawBrain");
 		this.getBrain().tick((ServerLevel) this.level, this);
@@ -213,6 +233,7 @@ public class Bloodjaw extends Monster implements Enemy, HoglinBase {
 		this.updateActivity();
 	}
 
+	@Override
 	public void setBaby(boolean p_34227_) {
 		this.getEntityData().set(DATA_BABY_ID, p_34227_);
 		if (!this.level.isClientSide && p_34227_) {
@@ -221,10 +242,12 @@ public class Bloodjaw extends Monster implements Enemy, HoglinBase {
 
 	}
 
+	@Override
 	public boolean isBaby() {
 		return this.getEntityData().get(DATA_BABY_ID);
 	}
 
+	@Override
 	public void aiStep() {
 		if (this.attackAnimationRemainingTicks > 0) {
 			--this.attackAnimationRemainingTicks;
@@ -233,6 +256,7 @@ public class Bloodjaw extends Monster implements Enemy, HoglinBase {
 		super.aiStep();
 	}
 
+	@Override
 	public void handleEntityEvent(byte p_34212_) {
 		if (p_34212_ == 4) {
 			this.attackAnimationRemainingTicks = 10;
@@ -243,10 +267,12 @@ public class Bloodjaw extends Monster implements Enemy, HoglinBase {
 
 	}
 
+	@Override
 	public int getAttackAnimationRemainingTicks() {
 		return this.attackAnimationRemainingTicks;
 	}
 
+	@Override
 	protected SoundEvent getAmbientSound() {
 		if (this.level.isClientSide) {
 			return null;
@@ -256,14 +282,17 @@ public class Bloodjaw extends Monster implements Enemy, HoglinBase {
 		}
 	}
 
+	@Override
 	protected SoundEvent getHurtSound(DamageSource p_34244_) {
 		return SoundEvents.HOGLIN_HURT;
 	}
 
+	@Override
 	protected SoundEvent getDeathSound() {
 		return SoundEvents.HOGLIN_DEATH;
 	}
 
+	@Override
 	protected void playStepSound(BlockPos p_34231_, BlockState p_34232_) {
 		this.playSound(SoundEvents.HOGLIN_STEP, 0.15F, 1.0F);
 	}
@@ -272,15 +301,18 @@ public class Bloodjaw extends Monster implements Enemy, HoglinBase {
 		this.playSound(SoundEvents.HOGLIN_ANGRY, 1.0F, this.getVoicePitch());
 	}
 
+	@Override
 	protected void sendDebugPackets() {
 		super.sendDebugPackets();
 		DebugPackets.sendEntityBrain(this);
 	}
 
+	@Override
 	public MobType getMobType() {
-		return MobType.UNDEAD;
+		return MobType.UNDEFINED;
 	}
 
+	@Override
 	public void addAdditionalSaveData(CompoundTag p_34234_) {
 		super.addAdditionalSaveData(p_34234_);
 		if (this.isBaby()) {
@@ -289,11 +321,11 @@ public class Bloodjaw extends Monster implements Enemy, HoglinBase {
 
 	}
 
+	@Override
 	public void readAdditionalSaveData(CompoundTag p_34223_) {
 		super.readAdditionalSaveData(p_34223_);
 		if (p_34223_.getBoolean("IsBaby")) {
 			this.setBaby(true);
 		}
-
 	}
 }

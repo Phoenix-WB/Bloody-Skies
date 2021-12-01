@@ -13,7 +13,7 @@ public class BloodjawRenderer<Type extends Bloodjaw> extends MobRenderer<Type, B
 			"textures/entity/bloodjaw/bloodjaw.png");
 
 	public BloodjawRenderer(EntityRendererProvider.Context context) {
-		super(context, new BloodjawModel<>(context.bakeLayer(BloodjawModel.LAYER_LOCATION)), 0.5F);
+		super(context, new BloodjawModel<>(context.bakeLayer(BloodjawModel.LAYER_LOCATION)), 0.7F);
 	}
 
 	@Override

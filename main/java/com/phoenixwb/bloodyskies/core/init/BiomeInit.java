@@ -34,6 +34,6 @@ public class BiomeInit {
 	}
 
 	public static void registerBiomes() {
-		BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SANGUINE_SCAPES, 1));
+		BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SANGUINE_SCAPES, 6));
 	}
 }
