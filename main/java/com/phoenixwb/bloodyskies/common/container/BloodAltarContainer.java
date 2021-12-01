@@ -73,7 +73,7 @@ public class BloodAltarContainer extends AbstractContainerMenu {
             if(index < BloodAltarEntity.slots && !this.moveItemStackTo(stack1, BloodAltarEntity.slots, this.slots.size(), true)) {
                 return ItemStack.EMPTY;
             }
-            if(!this.moveItemStackTo(stack1, 0, this.slots.size(), false)) {
+            if(!this.moveItemStackTo(stack1, 0, BloodAltarEntity.slots, false)) {
                 return ItemStack.EMPTY;
             }
 
