@@ -1,0 +1,16 @@
+{
+	"item.bloodyskies.crimson_ichor": "Crimson Ichor",
+	"item.bloodyskies.tecpatl": "Tecpatl",
+	"item.bloodyskies.villager_heart": "Villager Heart",
+	"item.bloodyskies.bloodjaw_spawn_egg": "Bloodjaw Spawn Egg",
+	
+	"block.bloodyskies.bloodstone": "Bloodstone",
+	"block.bloodyskies.blood_altar": "Blood Altar",
+	"block.bloodyskies.clot_lily": "Clot Lily",
+	
+	"entity.bloodyskies.bloodjaw": "Bloodjaw",
+	
+	"itemGroup.bloody_skies": "Bloody Skies",
+	
+	"biome.bloodyskies.sanguine_scapes": "Sanguine Scapes"
+}

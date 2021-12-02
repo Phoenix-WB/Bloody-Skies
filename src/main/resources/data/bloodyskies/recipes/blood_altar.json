@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"CCC",
+		" S ",
+		"SSS"
+	],
+	"key": {
+		"C": {
+			"item": "bloodyskies:crimson_ichor"
+		},
+		"S": {
+			"item": "minecraft:stone_bricks"
+		}
+	},
+	"result": {
+		"item": "bloodyskies:blood_altar",
+		"count": 1
+	}
+}
