@@ -1,5 +1,6 @@
 # Bloody-Skies
 This mod aims to fulfill the sacrifice theme, and supplies a variety of features...
+
 Items:
 - Tecpatl; A tool made from quartz and Crimson Ichor, ideal for sacrifical purposes. Whilst a villager is sleeping, you can approach sneaking, and right click on the villager to retrieve its heart.
 - Crimson Ichor: A material of blood harvested of the Clot Lilies native to the Sanguine Scapes.
