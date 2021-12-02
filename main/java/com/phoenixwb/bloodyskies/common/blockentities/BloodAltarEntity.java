@@ -10,19 +10,29 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BloodAltarEntity extends RandomizableContainerBlockEntity {
+import java.util.UUID;
 
+public class BloodAltarEntity extends RandomizableContainerBlockEntity  {
+
+	private static final int diameter = 20;
+	private static final int radius = diameter / 2;
 	public static int slots = 1;
 	private static Minecraft minecraft = Minecraft.getInstance();
+	private static Player player = minecraft.player;
 
 	protected NonNullList<ItemStack> items = NonNullList.withSize(slots, ItemStack.EMPTY);
 
@@ -61,7 +71,7 @@ public class BloodAltarEntity extends RandomizableContainerBlockEntity {
 
 	@Override
 	protected Component getDefaultName() {
-		return new TranslatableComponent("container." + BloodySkies.MOD_ID + ".blood_altar");
+		return new TranslatableComponent("container." + BloodySkies.MOD_ID + ".test_block");
 	}
 
 	@Override
@@ -89,6 +99,34 @@ public class BloodAltarEntity extends RandomizableContainerBlockEntity {
 		this.items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
 		if (!this.tryLoadLootTable(nbt)) {
 			ContainerHelper.loadAllItems(nbt, this.items);
+		}
+	}
+
+
+	public static <T extends BlockEntity> void tick(Level level, BlockPos pos, BlockState state, T blockEntity) {
+		if(player == null || level == null) {
+			return;
+		}
+
+		BlockPos playerPos = player.blockPosition();
+		BlockPos worldPosition = blockEntity.getBlockPos();
+
+		int playerX = playerPos.getX();
+		int playerY = playerPos.getY();
+		int playerZ = playerPos.getZ();
+
+		int blockX = worldPosition.getX();
+		int blockY = worldPosition.getY();
+		int blockZ = worldPosition.getZ();
+
+		boolean betweenX = blockX - radius < playerX && blockX + radius > playerX;
+		boolean betweenY = blockY - radius < playerY && blockY + radius > playerY;
+		boolean betweenZ = blockZ - radius < playerZ && blockZ + radius > playerZ;
+
+		if(betweenX && betweenY && betweenZ) {
+			player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400), player);
+			player.addEffect(new MobEffectInstance(MobEffects.JUMP, 400), player);
+			player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 400), player);
 		}
 	}
 }
