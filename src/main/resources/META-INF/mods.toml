@@ -11,7 +11,7 @@ logoFile="LOGO.png" #optional
 credits="Made for Turty Wurty's november modding competition; Join my server for more development!: https://discord.gg/n5PnwgKSa8" #optional
 authors="Phoenix WB, BoonelDanForever" #optional
 description='''
-A clean world cannot come without sacrifice...
+Power up your world with sacrifice!
 '''
 [[dependencies.bloodyskies]] #optional
     modId="forge" #mandatory
