@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 
 import com.phoenixwb.bloodyskies.common.blockentities.BloodAltarEntity;
 
+import com.phoenixwb.bloodyskies.core.init.BlockEntityInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -18,6 +19,8 @@ import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -65,5 +68,11 @@ public class BloodAltar extends BaseEntityBlock {
             }
         }
         return super.use(state, level, pos, player, hand, result);
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        return type == BlockEntityInit.BLOOD_ALTAR_ENTITY.get() ? BloodAltarEntity::tick : null;
     }
 }
