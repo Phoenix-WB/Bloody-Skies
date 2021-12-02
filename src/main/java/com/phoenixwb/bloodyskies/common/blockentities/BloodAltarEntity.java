@@ -132,11 +132,11 @@ public class BloodAltarEntity extends RandomizableContainerBlockEntity {
 			boolean betweenZ = blockZ - radius < playerZ && blockZ + radius > playerZ;
 
 			if (betweenX && betweenY && betweenZ) {
-				rangePlayers.get(i).addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 200), rangePlayers.get(i));
-				rangePlayers.get(i).addEffect(new MobEffectInstance(MobEffects.JUMP, 200), rangePlayers.get(i));
-				rangePlayers.get(i).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200),
+				rangePlayers.get(i).addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 300), rangePlayers.get(i));
+				rangePlayers.get(i).addEffect(new MobEffectInstance(MobEffects.JUMP, 300), rangePlayers.get(i));
+				rangePlayers.get(i).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 300),
 						rangePlayers.get(i));
-				rangePlayers.get(i).addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 200), rangePlayers.get(i));
+				rangePlayers.get(i).addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 300), rangePlayers.get(i));
 			}
 			rangePlayers.remove(i);
 		}
