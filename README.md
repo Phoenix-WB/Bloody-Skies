@@ -2,7 +2,7 @@
 This mod aims to fulfill the sacrifice theme, and supplies a variety of features...
 
 Items:
-- Tecpatl; A tool made from quartz and Crimson Ichor, ideal for sacrifical purposes. Whilst a villager is sleeping, you can approach sneaking, and right click on the villager to sacrifice it in order to retrieve its heart.
+- Tecpatl; A tool made from quartz and Crimson Ichor, ideal for sacrifical purposes. Whilst a villager is sleeping, you can approach sneaking, and right click on the villager to sacrifice it in order to retrieve its heart. Keep in mind, this item is single use.
 - Crimson Ichor: A material of blood harvested of the Clot Lilies native to the Sanguine Scapes.
 - Villager Heart: You are truly evil, if you wish to fulfill your desires, take this to a Blood Altar.
 
