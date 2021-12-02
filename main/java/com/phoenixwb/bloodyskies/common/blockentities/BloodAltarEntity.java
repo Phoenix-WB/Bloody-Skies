@@ -104,10 +104,22 @@ public class BloodAltarEntity extends RandomizableContainerBlockEntity  {
 
 
 	public static <T extends BlockEntity> void tick(Level level, BlockPos pos, BlockState state, T blockEntity) {
-		if(player == null || level == null) {
+		player = minecraft.player;
+
+		if(player == null) {
 			return;
 		}
 
+		if(level == null) {
+			return;
+		}
+
+		ItemStack itemStack = ((BloodAltarEntity)level.getBlockEntity(pos)).getItems().get(0);
+
+		if (!itemStack.getItem().equals(ItemInit.VILLAGER_HEART.get())) {
+			return;
+		}
+		
 		BlockPos playerPos = player.blockPosition();
 		BlockPos worldPosition = blockEntity.getBlockPos();
 
