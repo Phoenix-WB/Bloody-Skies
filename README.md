@@ -1,4 +1,8 @@
-[![CurseForge](https://cf.way2muchnoise.eu/versions/543660.svg)](https://www.curseforge.com/minecraft/mc-mods/strippable-stone)
+[![CurseForge](https://cf.way2muchnoise.eu/versions/549475.svg)](https://www.curseforge.com/minecraft/mc-mods/bloody-skies)
+[![Download](http://cf.way2muchnoise.eu/full_549475_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/bloody-skies/files)
+[![Code](https://tokei.rs/b1/github/Phoenix-WB/Bloody-Skies?category=code)](https://github.com/Phoenix-WB/Bloody-Skies)
+
+
 # Bloody Skies Mod
 
 # Items:
