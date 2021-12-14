@@ -23,6 +23,3 @@
 
 # Biomes:
 - Sanguine Scapes: A land of blood and despair. Any entity will rapidly decay in this environment during the daytime, and as such it is strictly advised only to enter at night, if one wishes to collect Clot Lilies for Crimson Ichor. However, you must be cautious at this time, due to the Bloodjaws prowling through the bones and fleshy remains of this twisted place, good luck. 
-
-# Recipes:
-Check Curseforge: https://www.curseforge.com/minecraft/mc-mods/bloody-skies
