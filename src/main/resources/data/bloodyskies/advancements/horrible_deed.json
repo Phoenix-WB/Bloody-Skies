@@ -1,0 +1,32 @@
+{
+	"display": {
+		"icon": {
+			"item": "bloodyskies:villager_heart"
+		},
+		"title": {
+			"translate": "advancements.bloodyskies.horrible_deed.title"
+		},
+		"description": {
+			"translate": "advancements.bloodyskies.horrible_deed.desc"
+		},
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"parent": "bloodyskies:sacrificial_dagger",
+	"criteria": {
+		"requirement": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bloodyskies:villager_heart"
+						]
+					}
+				]
+			}
+		}
+	}
+}

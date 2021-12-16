@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"BBB",
+		"BBB",
+		"BBB"
+	],
+	"key": {
+		"B": {
+			"item": "bloodyskies:stained_silk"
+		}
+	},
+	"result": {
+		"item": "bloodyskies:blood_cloth",
+		"count": 1
+	}
+}

@@ -1,0 +1,30 @@
+{
+	"display": {
+		"icon": {
+			"item": "bloodyskies:blood_altar"
+		},
+		"title": {
+			"translate": "advancements.bloodyskies.sacrificial_power.title"
+		},
+		"description": {
+			"translate": "advancements.bloodyskies.sacrificial_power.desc"
+		},
+		"frame": "challenge",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"parent": "bloodyskies:altar_preparations",
+	"criteria": {
+		"requirement": {
+			"trigger": "minecraft:item_used_on_block",
+			"conditions": {
+				"item": {
+					"items": [
+						"bloodyskies:blood_cloth"
+					]
+				}
+			}
+		}
+	}
+}

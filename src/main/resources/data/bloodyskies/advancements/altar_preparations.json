@@ -1,0 +1,32 @@
+{
+	"display": {
+		"icon": {
+			"item": "bloodyskies:blood_cloth"
+		},
+		"title": {
+			"translate": "advancements.bloodyskies.altar_preparations.title"
+		},
+		"description": {
+			"translate": "advancements.bloodyskies.altar_preparations.desc"
+		},
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"parent": "bloodyskies:unpleasant",
+	"criteria": {
+		"requirement": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bloodyskies:blood_cloth"
+						]
+					}
+				]
+			}
+		}
+	}
+}

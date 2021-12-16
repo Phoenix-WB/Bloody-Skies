@@ -1,0 +1,32 @@
+{
+	"display": {
+		"icon": {
+			"item": "bloodyskies:clot_lily"
+		},
+		"title": {
+			"translate": "advancements.bloodyskies.unpleasant.title"
+		},
+		"description": {
+			"translate": "advancements.bloodyskies.unpleasant.desc"
+		},
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"parent": "bloodyskies:bloody_skies",
+	"criteria": {
+		"requirement": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"bloodyskies:crimson_ichor"
+						]
+					}
+				]
+			}
+		}
+	}
+}

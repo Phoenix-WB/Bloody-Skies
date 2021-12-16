@@ -1,0 +1,34 @@
+{
+	"display": {
+		"icon": {
+			"item": "bloodyskies:bloodjaw_spawn_egg"
+		},
+		"title": {
+			"translate": "advancements.bloodyskies.raging_tusk.title"
+		},
+		"description": {
+			"translate": "advancements.bloodyskies.raging_tusk.desc"
+		},
+		"frame": "challenge",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"parent": "bloodyskies:bloody_skies",
+	"criteria": {
+		"requirement": {
+			"trigger": "minecraft:player_killed_entity",
+			"conditions": {
+				"entity": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"type": "bloodyskies:bloodjaw"
+						}
+					}
+				]
+			}
+		}
+	}
+}

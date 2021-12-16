@@ -1,0 +1,34 @@
+{
+	"advancements.bloodyskies.altar_preparations.title": "Altar Preparations",
+	"advancements.bloodyskies.altar_preparations.desc": "Sew together a Blood Cloth",
+	"advancements.bloodyskies.bloody_skies.title": "Bloody Skies",
+	"advancements.bloodyskies.bloody_skies.desc": "Visit the Sanguine Scapes",
+	"advancements.bloodyskies.horrible_deed.title": "Horrible Deed",
+	"advancements.bloodyskies.horrible_deed.desc": "Steal a Villager's Heart",
+	"advancements.bloodyskies.raging_tusk.title": "Raging Tusk",
+	"advancements.bloodyskies.raging_tusk.desc": "Slay the ferocious Bloodjaw",
+	"advancements.bloodyskies.sacrificial_dagger.title": "Sacrificial Dagger",
+	"advancements.bloodyskies.sacrificial_dagger.desc": "Forge a Tecpatl",
+	"advancements.bloodyskies.sacrificial_power.title": "Sacrificial Power",
+	"advancements.bloodyskies.sacrificial_power.desc": "Place a Blood Cloth on a Pedestal",
+	"advancements.bloodyskies.unpleasant.title": "Unpleasant",
+	"advancements.bloodyskies.unpleasant.desc":  "Harvest Crimson Ichor from a Clot Lily",
+
+	"biome.bloodyskies.sanguine_scapes": "Sanguine Scapes",
+	
+	"block.bloodyskies.bloodstone": "Bloodstone",
+	"block.bloodyskies.blood_altar": "Blood Altar",
+	"block.bloodyskies.clot_lily": "Clot Lily",
+	"block.bloodyskies.pedestal": "Pedestal",
+	
+	"entity.bloodyskies.bloodjaw": "Bloodjaw",
+
+	"item.bloodyskies.crimson_ichor": "Crimson Ichor",
+	"item.bloodyskies.tecpatl": "Tecpatl",
+	"item.bloodyskies.villager_heart": "Villager Heart",
+	"item.bloodyskies.bloodjaw_spawn_egg": "Bloodjaw Spawn Egg",
+	"item.bloodyskies.stained_silk": "Stained Silk",
+	"item.bloodyskies.blood_cloth": "Blood Cloth",
+	
+	"itemGroup.bloody_skies": "Bloody Skies"
+}

@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "bloodyskies:stained_silk"
+    },
+    "addition": {
+        "item": "minecraft:quartz"
+    },
+    "result": {
+        "item": "bloodyskies:tecpatl"
+    }
+}

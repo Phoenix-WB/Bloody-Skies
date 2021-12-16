@@ -1,0 +1,27 @@
+modLoader="javafml" #mandatory
+loaderVersion="[37,)" #mandatory 
+license="MIT"
+[[mods]] #mandatory
+modId="bloodyskies" #mandatory
+version="${file.jarVersion}" #mandatory
+displayName="Bloody Skies" #mandatory
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
+#issueTrackerURL="blahblahblah" 
+logoFile="LOGO.png" #optional
+credits="Made for Turty Wurty's november modding competition; Join my server for more development!: https://discord.gg/n5PnwgKSa8" #optional
+authors="Phoenix WB, BoonelDanForever" #optional
+description='''
+Power up your world with sacrifice!
+'''
+[[dependencies.bloodyskies]] #optional
+    modId="forge" #mandatory
+    mandatory=true #mandatory
+    versionRange="[37,)" #mandatory
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.bloodyskies]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.17.1,1.18)"
+    ordering="NONE"
+    side="BOTH"
